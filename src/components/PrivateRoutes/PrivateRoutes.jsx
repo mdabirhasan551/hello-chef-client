@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavigationBar = () => {
+const PrivateRoutes = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const NavigationBar = () => {
     );
 };
 
-export default NavigationBar;
+export default PrivateRoutes;

@@ -1,10 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Navigation from "../../shared/Navigation";
 
 const MainLayout = () => {
   return (
     <div>
-      <h1>This is main</h1>
+      <Navigation />
       <Outlet />
     </div>
   );
