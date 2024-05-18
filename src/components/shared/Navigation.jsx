@@ -8,7 +8,11 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 
 const Navigation = () => {
-  const {user} = useContext(AuthContext) 
+  const {user, signOutUser} = useContext(AuthContext) 
+  const handleSignOut = () => {
+    signOutUser()
+    
+  }
   return (
     <div>
      
@@ -29,7 +33,7 @@ const Navigation = () => {
             </Nav>
             <Nav>
               
-              {user?<div><FaRegUserCircle className="fs-1" style={{cursor: "pointer"}} /> <Button>Logout</Button></div> : <div><Nav.Link href="/login">Login</Nav.Link><Nav.Link href="/register">Register</Nav.Link></div>}
+              {user?<div><FaRegUserCircle className="fs-1" style={{cursor: "pointer"}} /> <Button onClick={handleSignOut}>Logout</Button></div> : <div><Nav.Link href="/login">Login</Nav.Link><Nav.Link href="/register">Register</Nav.Link></div>}
               
             </Nav>
           </Navbar.Collapse>
