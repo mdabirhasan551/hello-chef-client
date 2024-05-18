@@ -18,29 +18,54 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/"),
+        loader: () =>
+          fetch(
+            "https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app"
+          ),
       },
       {
         path: "/chef",
         element: <Chef />,
-        loader: () => fetch("http://localhost:5000/chef"),
+        loader: () =>
+          fetch(
+            "https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app/chef"
+          ),
       },
       {
         path: "chef/:chefId",
-        element: <PrivateRoutes><SingleChef /></PrivateRoutes>,
+        element: (
+          <PrivateRoutes>
+            <SingleChef />
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/chef/${params.chefId}`),
+          fetch(
+            `https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app/chef/${params.chefId}`
+          ),
       },
       {
         path: "/recipes",
-        element: <PrivateRoutes><Recipe /></PrivateRoutes>,
-        loader: () => fetch("http://localhost:5000/recipes"),
+        element: (
+          <PrivateRoutes>
+            <Recipe />
+          </PrivateRoutes>
+        ),
+        loader: () =>
+          fetch(
+            "https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app/recipes"
+          ),
       },
       {
         path: "/recipes/:recipeId",
-        element: <PrivateRoutes><SingleRecipe /></PrivateRoutes>,
+        element: (
+          <PrivateRoutes>
+            <SingleRecipe />
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
-        fetch(`http://localhost:5000/recipes/${params.recipeId}`)
+          fetch(
+            `https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app/recipes/${params.recipeId}`
+          ),
       },
       {
         path: "/login",
