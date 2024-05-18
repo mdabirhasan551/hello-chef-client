@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (event) => {
@@ -60,8 +60,8 @@ const Register = () => {
           <p>
             Already Have an account? <Link to="/register">Login Here</Link>
           </p>
-          <p className='text-center'><Button className='btn-success p-2'>Login with google <FaGoogle className='m-2'/></Button></p>
-          <p className='text-center'><Button className='btn-dark p-2'>Login with Github<FaGithub className='m-2'/></Button></p>
+          <p className='text-center'><Button onClick={googleSignIn} className='btn-success p-2'>Continue with google <FaGoogle className='m-2'/></Button></p>
+          <p className='text-center'><Button className='btn-dark p-2'>Continue with Github<FaGithub className='m-2'/></Button></p>
         </Form>
       </div>
     </div>

@@ -38,8 +38,6 @@ const AuthProviders = ({ children }) => {
       .then((result) => {
         setUser(result.user);
         const loggedUser = result.user;
-        console.log(loggedUser);
-        Navigate(from, { replace: true });
         setLoading(false);
       })
       .catch((error) => {
