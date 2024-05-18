@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { AuthContext } from "../Providers/AuthProviders/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -18,7 +19,7 @@ const Register = () => {
     createUser(email, password)
      .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser)
+        navigate("/");
       })
      .catch((error) => {
         console.log(error.message);

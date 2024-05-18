@@ -1,26 +1,29 @@
 import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders/AuthProviders";
 
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target.elements;
     const email = form.email.value;
     const password = form.password.value;
-    
 
     signInUser(email, password)
-    .then(result => {
-      const loggedUser = result.user
-      console.log(loggedUser)
-    })
-    .catch(error => console.log(error))
-  }
+      .then((result) => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="d-flex p-5 m-5 justify-content-center">
       <div>

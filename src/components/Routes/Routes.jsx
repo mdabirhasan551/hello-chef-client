@@ -8,6 +8,7 @@ import Register from "../Register/Register";
 import Chef from "../Chef/Chef";
 import SingleChef from "../Chef/SingleChef";
 import SingleRecipe from "../Recipe/SingleRecipe";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -26,18 +27,18 @@ const router = createBrowserRouter([
       },
       {
         path: "chef/:chefId",
-        element: <SingleChef />,
+        element: <PrivateRoutes><SingleChef /></PrivateRoutes>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/chef/${params.chefId}`),
       },
       {
         path: "/recipes",
-        element: <Recipe />,
+        element: <PrivateRoutes><Recipe /></PrivateRoutes>,
         loader: () => fetch("http://localhost:5000/recipes"),
       },
       {
         path: "/recipes/:recipeId",
-        element: <SingleRecipe />,
+        element: <PrivateRoutes><SingleRecipe /></PrivateRoutes>,
         loader: ({ params }) =>
         fetch(`http://localhost:5000/recipes/${params.recipeId}`)
       },
