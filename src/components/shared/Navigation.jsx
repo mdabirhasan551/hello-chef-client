@@ -5,10 +5,10 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { AuthContext } from "../Providers/AuthProviders/AuthProviders";
 import { FaRegUserCircle } from "react-icons/fa";
+import { Button } from "react-bootstrap";
 
 const Navigation = () => {
   const {user} = useContext(AuthContext) 
-  console.log(user)
   return (
     <div>
      
@@ -29,7 +29,7 @@ const Navigation = () => {
             </Nav>
             <Nav>
               
-              {user?<FaRegUserCircle className="fs-1" style={{cursor: "pointer"}} /> : <Nav.Link href="/login">Login</Nav.Link>}
+              {user?<div><FaRegUserCircle className="fs-1" style={{cursor: "pointer"}} /> <Button>Logout</Button></div> : <div><Nav.Link href="/login">Login</Nav.Link><Nav.Link href="/register">Register</Nav.Link></div>}
               
             </Nav>
           </Navbar.Collapse>
