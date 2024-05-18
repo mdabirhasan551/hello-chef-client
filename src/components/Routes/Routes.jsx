@@ -5,6 +5,9 @@ import Login from "../Login/Login";
 import Recipe from "../Recipe/Recipe";
 import Home from "../Home/Home";
 import Register from "../Register/Register";
+import Chef from "../Chef/Chef";
+import SingleChef from "../Chef/SingleChef";
+import SingleRecipe from "../Recipe/SingleRecipe";
 
 const router = createBrowserRouter([
   {
@@ -17,8 +20,13 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5000/"),
       },
       {
-        path: "/recipes",
-        element: <Recipe />,
+        path: "chef/:chefId",
+        element: <SingleChef />,
+        loader: ({params}) => fetch(`http://localhost:5000/chef/${params.chefId}`),
+      },
+      {
+        path: "/recipes/:recipeId",
+        element: <SingleRecipe />,
       },
       {
         path: "/login",

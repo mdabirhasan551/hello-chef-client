@@ -12,8 +12,9 @@ const Navigation = () => {
           <Navbar.Brand className="fs-2" href="/"><b>Hello</b> <span className="text-warning"><b>Chef</b></span></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="m-auto">
               <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/chef">Chef</Nav.Link>
               <Nav.Link href="/recipes">Recipes</Nav.Link>
               
             </Nav>

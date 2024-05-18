@@ -1,15 +1,15 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
-import { Card, CardGroup, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, CardGroup, Col, Container, Row } from "react-bootstrap";
 import "react-owl-carousel2/src/owl.carousel.css";
 import "react-owl-carousel2/src/owl.theme.default.css";
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import Footer from "../shared/Footer";
 
 const Home = () => {
   const datas = useLoaderData();
-  console.log(datas);
   return (
     <div>
       <Carousel className="bg-dark">
@@ -20,6 +20,7 @@ const Home = () => {
                 <Col className="text-white">
                   <h3>{data.name}</h3>
                   <p>{data.description}</p>
+                  <Link to={`/chef/${data._id}`}><Button variant="info">See My Recipes</Button></Link>
                 </Col>
                 <Col>
                   <img
@@ -30,11 +31,13 @@ const Home = () => {
                   />
                 </Col>
               </Row>
+              
             </Container>
+            
           </Carousel.Item>
         ))}
       </Carousel>
-      <Carousel className="bg-dark">
+      <Carousel className="bg-light w-50 m-auto">
         {datas.map((singleData) => {
           const chunks = []; // Array to hold chunks of recipes
           for (let i = 0; i < singleData.recipes.length; i += 3) {
@@ -44,7 +47,7 @@ const Home = () => {
             <Carousel.Item key={index} className="p-5">
               <CardGroup>
                 {chunk.map((recipe) => (
-                  <Card key={recipe.id} style={{ height: "750px" }}>
+                  <Card key={recipe.id} style={{ height: "600px"}}>
                     <Card.Img
                       className="w-100"
                       style={{ height: "300px" }}
@@ -54,14 +57,15 @@ const Home = () => {
 
                     <Card.Body>
                       <Card.Title>{recipe.title}</Card.Title>
-                      <Card.Text>{recipe.description}</Card.Text>
+                      <Card.Text>{recipe.description.slice(0,60)+ '...'}</Card.Text>
+                      <Link to={`/recipes/${recipe.id}`}><Button variant="warning">See Recipe</Button></Link>
                     </Card.Body>
                     <Card.Footer>
                       <Rating
-                        placeholderRating={recipe.rating / 2} // Adjust placeholderRating to fit the scale
-                        initialRating={recipe.rating / 2} // Set initialRating to fit the scale
-                        readonly={true} // Make the rating readonly
-                        emptySymbol={<FaRegStar className="text-warning"/>}
+                        placeholderRating={recipe.rating / 2}
+                        initialRating={recipe.rating / 2} 
+                        readonly={true} 
+                        emptySymbol={<FaRegStar className="text-warning" />}
                         placeholderSymbol={
                           <FaRegStar className="text-warning" />
                         }
@@ -76,6 +80,7 @@ const Home = () => {
           ));
         })}
       </Carousel>
+      <Footer />
     </div>
   );
 };
