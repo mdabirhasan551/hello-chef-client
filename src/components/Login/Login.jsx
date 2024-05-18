@@ -5,7 +5,7 @@ import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders/AuthProviders";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -23,6 +23,10 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  const handleGoogleSignIn = () =>{
+    googleSignIn()
+  }
 
   return (
     <div className="d-flex p-5 m-5 justify-content-center">
@@ -52,7 +56,7 @@ const Login = () => {
             Don't Have an account? <Link to="/register">Register Here</Link>
           </p>
           <p className="text-center">
-            <Button className="btn-success p-2">
+            <Button onClick={handleGoogleSignIn} className="btn-success p-2">
               Login with google <FaGoogle className="m-2" />
             </Button>
           </p>
