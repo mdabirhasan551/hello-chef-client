@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import { Button, Card, CardGroup, Col, Container, Row } from "react-bootstrap";
-import "react-owl-carousel2/src/owl.carousel.css";
-import "react-owl-carousel2/src/owl.theme.default.css";
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import Footer from "../shared/Footer";
