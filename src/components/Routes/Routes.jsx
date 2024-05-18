@@ -20,13 +20,26 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5000/"),
       },
       {
+        path: "/chef",
+        element: <Chef />,
+        loader: () => fetch("http://localhost:5000/chef"),
+      },
+      {
         path: "chef/:chefId",
         element: <SingleChef />,
-        loader: ({params}) => fetch(`http://localhost:5000/chef/${params.chefId}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/chef/${params.chefId}`),
+      },
+      {
+        path: "/recipes",
+        element: <Recipe />,
+        loader: () => fetch("http://localhost:5000/recipes"),
       },
       {
         path: "/recipes/:recipeId",
         element: <SingleRecipe />,
+        loader: ({ params }) =>
+        fetch(`http://localhost:5000/recipes/${params.recipeId}`)
       },
       {
         path: "/login",

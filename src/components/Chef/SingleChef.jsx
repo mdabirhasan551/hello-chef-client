@@ -18,6 +18,7 @@ const SingleChef = () => {
               <p>{description}</p>
               <p className="d-flex align-items-center">
                 <Rating
+                  readonly
                   placeholderRating={rating / 2}
                   emptySymbol={<FaRegStar className="text-warning" />}
                   placeholderSymbol={<FaStar className="text-warning" />}
@@ -40,25 +41,27 @@ const SingleChef = () => {
 
       <div>
         {recipes.map((singleRecipe) => (
-          <div>
-            <Container>
-              <Row>
-                <Col className="mt-2 mb-4">
-                  <Card style={{ width: "30rem" }}>
-                    <Card.Img variant="top" src={singleRecipe.image} />
-                    <Card.Body>
-                      <Card.Title>{singleRecipe.title}</Card.Title>
-                      <Card.Text>
-                        {singleRecipe.description.slice(0, 60) + "..."}
-                      </Card.Text>
-                      <Link to={`/recipes/${singleRecipe.id}`}>
-                        <Button variant="warning">See Recipe</Button>
-                      </Link>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </Container>
+          <div className="d-flex justify-content-center">
+            <div>
+              <Container>
+                <Row>
+                  <Col className="mt-2 mb-4">
+                    <Card style={{ width: "30rem" }}>
+                      <Card.Img variant="top" src={singleRecipe.image} />
+                      <Card.Body>
+                        <Card.Title>{singleRecipe.title}</Card.Title>
+                        <Card.Text>
+                          {singleRecipe.description.slice(0, 60) + "..."}
+                        </Card.Text>
+                        <Link to={`/recipes/${singleRecipe.id}`}>
+                          <Button variant="warning">See Recipe</Button>
+                        </Link>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Row>
+              </Container>
+            </div>
           </div>
         ))}
       </div>

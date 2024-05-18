@@ -20,7 +20,9 @@ const Home = () => {
                 <Col className="text-white">
                   <h3>{data.name}</h3>
                   <p>{data.description}</p>
-                  <Link to={`/chef/${data._id}`}><Button variant="info">See My Recipes</Button></Link>
+                  <Link to={`/chef/${data._id}`}>
+                    <Button variant="info">See My Recipes</Button>
+                  </Link>
                 </Col>
                 <Col>
                   <img
@@ -31,13 +33,11 @@ const Home = () => {
                   />
                 </Col>
               </Row>
-              
             </Container>
-            
           </Carousel.Item>
         ))}
       </Carousel>
-      <Carousel className="bg-light w-50 m-auto">
+      <Carousel controls={false} indicators={false} interval={500} className="bg-light w-50 m-auto">
         {datas.map((singleData) => {
           const chunks = []; // Array to hold chunks of recipes
           for (let i = 0; i < singleData.recipes.length; i += 3) {
@@ -47,7 +47,7 @@ const Home = () => {
             <Carousel.Item key={index} className="p-5">
               <CardGroup>
                 {chunk.map((recipe) => (
-                  <Card key={recipe.id} style={{ height: "600px"}}>
+                  <Card key={recipe.id} style={{ height: "600px" }}>
                     <Card.Img
                       className="w-100"
                       style={{ height: "300px" }}
@@ -57,14 +57,18 @@ const Home = () => {
 
                     <Card.Body>
                       <Card.Title>{recipe.title}</Card.Title>
-                      <Card.Text>{recipe.description.slice(0,60)+ '...'}</Card.Text>
-                      <Link to={`/recipes/${recipe.id}`}><Button variant="warning">See Recipe</Button></Link>
+                      <Card.Text>
+                        {recipe.description.slice(0, 60) + "..."}
+                      </Card.Text>
+                      <Link to={`/recipes/${recipe.id}`}>
+                        <Button variant="warning">See Recipe</Button>
+                      </Link>
                     </Card.Body>
                     <Card.Footer>
                       <Rating
                         placeholderRating={recipe.rating / 2}
-                        initialRating={recipe.rating / 2} 
-                        readonly={true} 
+                        initialRating={recipe.rating / 2}
+                        readonly={true}
                         emptySymbol={<FaRegStar className="text-warning" />}
                         placeholderSymbol={
                           <FaRegStar className="text-warning" />
