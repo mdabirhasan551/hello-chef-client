@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         element: <Home />,
         loader: () =>
           fetch(
-            "https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app"
+            "https://hello-chef-kappa.vercel.app"
           ),
       },
       {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Chef />,
         loader: () =>
           fetch(
-            "https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app/chef"
+            "https://hello-chef-kappa.vercel.app/chef"
           ),
       },
       {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app/chef/${params.chefId}`
+            `https://hello-chef-kappa.vercel.app/chef/${params.chefId}`
           ),
       },
       {
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         ),
         loader: () =>
           fetch(
-            "https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app/recipes"
+            "https://hello-chef-kappa.vercel.app/recipes"
           ),
       },
       {
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://hello-chef-7j1tgszih-md-abir-hasans-projects.vercel.app/recipes/${params.recipeId}`
+            `https://hello-chef-kappa.vercel.app/recipes/${params.recipeId}`
           ),
       },
       {
